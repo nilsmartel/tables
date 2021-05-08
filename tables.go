@@ -1,20 +1,35 @@
 package tables
 
+import "errors"
+
 type Table struct {
 	rows [][]string
 }
 
-func repeate(s string, times int) string {
-	res := ""
-	for times != 0 {
-		times -= 1
-		res += s
+func sum(list [] int) int {
+	s := 0
+	for _,v := range list {
+		s += v
 	}
-
-	return res
+	return s
 }
 
-func (t *Table) String() string {
+func (t *Table) Format(maxwidth int) (string, error) {
+	if maxwidth < t.AmountCols()*2 -1 {
+		return "", errors.New("maxwidth: Need at least one character per column and one character to separate columns")
+	}
+
+	// desired colsizes
+	colSizes := t.colSizes()
+
+	if sum(colSizes) + t.AmountCols()-1 >= maxwidth {
+		return t.String(), nil
+	}
+
+	panic("Unimplemented")
+}
+
+func (t *Table) colSizes() []int {
 	colSizes := make([]int, t.AmountCols())
 
 	for _, row := range t.rows {
@@ -26,12 +41,26 @@ func (t *Table) String() string {
 			}
 		}
 	}
+	return colSizes
+}
+
+func repeat(s string, times int) string {
+	res := ""
+	for times != 0 {
+		times -= 1
+		res += s
+	}
+
+	return res
+}
+
+func (t *Table) String() string {
+	colSizes := t.colSizes()
 
 	res := ""
-
 	for _, row := range t.rows {
 		for colIndex, cell := range row {
-			res += cell + repeate(" ", 1+colSizes[colIndex]-len(cell))
+			res += cell + repeat(" ", 1+colSizes[colIndex]-len(cell))
 		}
 
 		res += "\n"
