@@ -1,9 +1,10 @@
 package main
 
+// Test demonstration of how this package works
+
 import (
 	"fmt"
-
-	"github.com/nilsmartel/tables"
+	"nilsmartel/m/v2"
 )
 
 func main() {
