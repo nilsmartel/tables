@@ -11,9 +11,9 @@ func main() {
 	t := tables.NewTable().
 		AppendCells("Name", "Firstname", "Birthyear", "Profession").
 		AppendCells("Martel", "Nils", "1997", "Developer").
-		AppendCells("Warmbold", "Denise", "1993", "Tourismexpert").
-		AppendCells("Paisdzior", "Steffen", "1998", "Trainee").
-		AppendCells("Paisdzior", "Jonas", "1998", "Nurse")
+		AppendCells("Wayne", "Bruce", "1820", "Disputed").
+		AppendCells("Doe", "Jane", "1993", "Tourismexpert").
+		AppendCells("Parker", "Peter", "1992", "Spiderman")
 
 	fmt.Println(t)
 }
