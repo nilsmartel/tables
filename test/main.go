@@ -4,7 +4,7 @@ package main
 
 import (
 	"fmt"
-	"nilsmartel/m/v2"
+	"nilsmartel/tables/v1"
 )
 
 func main() {

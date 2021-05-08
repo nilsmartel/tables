@@ -1,3 +1,3 @@
-module nilsmartel/m/v2
+module nilsmartel/tables/v1
 
 go 1.14
